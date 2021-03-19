@@ -3,9 +3,20 @@
 
 #include <iostream>
 
+#include "Server.h"
+
+Server* server;
+
 int main()
 {
     std::cout << "Hello World!\n";
+
+    server = new Server(24680);
+    server->start();
+
+    while (true)
+    {
+    }
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
