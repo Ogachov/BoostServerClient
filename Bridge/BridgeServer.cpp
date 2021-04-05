@@ -24,8 +24,9 @@ void chat_room::deliver(const chat_message& msg)
     case LogCommand::ClientId:
         break;
     default:
-        for (auto participant : participants_)
+        for (auto participant : participants_) {
             participant->deliver(msg);
+        }
         break;
     }
 }
@@ -42,11 +43,18 @@ void chat_session::start()
 {
     std::cout << "chat_session::start" << std::endl;
     room_.join(shared_from_this());
+    read_msg_.set_from(socket_.remote_endpoint().port());
     do_read_header();
 }
 
 void chat_session::deliver(const chat_message& msg)
 {
+    //©•ª‚É‚Í”zM‚µ‚È‚¢
+    if (msg.from() == socket_.remote_endpoint().port())
+    {
+        return;
+    }
+
     bool write_in_progress = !write_msgs_.empty();
     write_msgs_.push_back(msg);
     if (!write_in_progress)

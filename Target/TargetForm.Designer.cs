@@ -1,6 +1,6 @@
 ﻿namespace Target
 {
-    partial class Form1
+    partial class TargetForm
     {
         /// <summary>
         /// 必要なデザイナー変数です。

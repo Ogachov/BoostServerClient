@@ -53,14 +53,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="..\Target\LogClient.cs">
+      <Link>LogClient.cs</Link>
+    </Compile>
+    <Compile Include="..\Target\LogClientEventArgs.cs">
+      <Link>LogClientEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\Target\LogCommand.cs">
+      <Link>LogCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\Target\LogStateObject.cs">
+      <Link>LogStateObject.cs</Link>
+    </Compile>
+    <Compile Include="ViewerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ViewerForm.Designer.cs">
+      <DependentUpon>ViewerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ViewerForm.resx">
+      <DependentUpon>ViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

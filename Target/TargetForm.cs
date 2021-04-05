@@ -12,11 +12,11 @@ using System.Net.Sockets;
 
 namespace Target
 {
-    public partial class Form1 : Form
+    public partial class TargetForm : Form
     {
         private LogClient client;
 
-        public Form1()
+        public TargetForm()
         {
             InitializeComponent();
         }

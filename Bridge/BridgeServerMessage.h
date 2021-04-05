@@ -45,7 +45,7 @@ public:
         return body_length_;
     }
 
-    void body_length(std::size_t new_length)
+    void body_length(std::int32_t new_length)
     {
         body_length_ = new_length;
         if (body_length_ > max_body_length)
@@ -54,7 +54,7 @@ public:
 
     bool decode_header()
     {
-        body_length_ = *reinterpret_cast<int*>(data_);
+        body_length_ = *reinterpret_cast<const int*>(data_);
 
         if (body_length_ > max_body_length)
         {
@@ -71,10 +71,21 @@ public:
 
     int decode_command() const
     {
-        return *reinterpret_cast<int*>(data_[4]);
+        return *reinterpret_cast<const int*>(&data_[4]);
+    }
+
+    void set_from(unsigned short port)
+    {
+        from_ = port;
+    }
+
+    unsigned short from() const
+    {
+        return from_;
     }
 
 private:
+    unsigned short from_;
     char data_[header_length + max_body_length];
-    std::size_t body_length_;
+    std::int32_t body_length_;
 };
