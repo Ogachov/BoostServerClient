@@ -4,11 +4,36 @@
 #include <iostream>
 
 #include "Server.h"
+#include "BridgeServer.h"
 
 Server* server;
 
 int main()
 {
+    try
+    {
+//        if (argc < 2)
+//        {
+//            std::cerr << "Usage: chat_server <port> [<port> ...]\n";
+//            return 1;
+//        }
+
+        boost::asio::io_context io_context;
+
+        std::list<chat_server> servers;
+
+        tcp::endpoint endpoint(tcp::v4(), 24680);
+        servers.emplace_back(io_context, endpoint);
+
+        io_context.run();
+    }
+    catch (std::exception& e)
+    {
+        std::cerr << "Exception: " << e.what() << "\n";
+    }
+
+    return 0;
+#if 0
     std::cout << "Hello World!\n";
 
     server = new Server(24680);
@@ -17,6 +42,7 @@ int main()
     while (true)
     {
     }
+#endif
 }
 
 // プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー

@@ -148,9 +148,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bridge.cpp" />
+    <ClCompile Include="BridgeServer.cpp" />
     <ClCompile Include="Server.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BridgeServer.h" />
+    <ClInclude Include="BridgeServerMessage.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="Message.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="Session.h" />
